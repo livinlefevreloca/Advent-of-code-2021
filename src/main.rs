@@ -10,10 +10,10 @@ fn main() -> Result<(), Box<dyn Error + 'static>>{
     
     match problem {
         1 => {
-            let mut increases = count_windowed_increases(1);
+            let mut increases = count_windowed_increases(1, "p1.txt");
             println!("Found {} increases", increases);
 
-            increases = count_windowed_increases(3);
+            increases = count_windowed_increases(3, "p1_2.txt");
             println!("Found {} Summed increases", increases)
         }
         _ => println!("Problem {} not implemnted yet", problem)
@@ -23,10 +23,11 @@ fn main() -> Result<(), Box<dyn Error + 'static>>{
 }
 
 
-// Count the number of "increases" between windows of given size
+// Count the number of "increases" between windows of given size for the input file
 //
 //  Args:
 //      window_size: The size of the windows to compare     
+//      file_name: The name of the file to read input from
 //  Returns:
 //      A count for the number of increases between windows of the given size
 //
@@ -44,8 +45,8 @@ fn main() -> Result<(), Box<dyn Error + 'static>>{
 //
 // 10 < 12 so no increase
 //
-fn count_windowed_increases(window_size: usize) -> u32 {
-    let inputs = read_line_delimited("p1_2.txt");
+fn count_windowed_increases(window_size: usize, file_name: &str) -> u32 {
+    let inputs = read_line_delimited(file_name);
 
     inputs
         .into_iter()
