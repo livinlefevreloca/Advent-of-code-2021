@@ -36,11 +36,13 @@ fn main() -> Result<(), Box<dyn Error + 'static>>{
 // |
 // 3 -- | window1, sum = 3 + 4 + 5 = 12
 // |    | 
-// 4 -- | -- | 
+// 4 -- | -- | window2, sum = 4 + 5 + 1 = 10
 // |    |    |
 // 5 -- |    |
 // |         |
 // 1 -- - -- |
+//
+// 10 < 12 so no increase
 //
 fn count_windowed_increases(window_size: usize) -> u32 {
     let inputs = read_line_delimited("p1_2.txt");
